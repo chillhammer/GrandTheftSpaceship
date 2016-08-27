@@ -36,9 +36,6 @@ vspd = 0;
 controls_init();
 
 warpFlash = false; //a variable that will flash if recently warped
-
-//custom image angle so the collision box isnt affected
-image_rot = 0;
 </string>
           </argument>
         </arguments>
@@ -89,12 +86,8 @@ var ver = controls_key_check(cont_down)-controls_key_check(cont_up);
 
 hspd = hor*move_spd;
 vspd = ver*move_spd;
-if(!place_meeting(x+hspd,y,obj_solid))
-    x += hspd;
-    
-if(!place_meeting(x,y+vspd,obj_solid))
-    y += vspd;
-
+x += hspd;
+y += vspd;
 </string>
           </argument>
         </arguments>
@@ -153,8 +146,8 @@ if( x &gt; room_width || x &lt; 0 || y &gt; room_height || y &lt; 0){
 
 if(!warpFlash){
     var pd = point_to_mouse(x,y);
-    var dd = angle_difference(image_rot, pd);
-    image_rot -= min(abs(dd), abs(dd)/turn_spd) * sign(dd);
+    var dd = angle_difference(image_angle, pd);
+    image_angle -= min(abs(dd), abs(dd)/turn_spd) * sign(dd);
 }
 </string>
           </argument>
@@ -180,11 +173,9 @@ if(!warpFlash){
             <kind>1</kind>
             <string>///Draw Self
 
+draw_self();
 
-
-draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_rot,image_blend,image_alpha);
-
-draw_self_loop_ext(1,image_rot);
+draw_self_loop();
 </string>
           </argument>
         </arguments>

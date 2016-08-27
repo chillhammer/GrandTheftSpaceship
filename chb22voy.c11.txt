@@ -1,0 +1,22 @@
+﻿Revert "The Merge to End All Merges"
+
+This reverts commit 446c5096d04d9972f10908643d3cb6ed06c10de7, reversing
+changes made to 94901cefaf5490c9cbbb320e7c9717f0494e8c96.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   GrandTheftSpaceship-Alpha.gmx/GrandTheftSpaceship-Alpha.project.gmx
+#	modified:   GrandTheftSpaceship-Alpha.gmx/objects/obj_block.object.gmx
+#	deleted:    GrandTheftSpaceship-Alpha.gmx/objects/obj_controller.object.gmx
+#	modified:   GrandTheftSpaceship-Alpha.gmx/objects/obj_player.object.gmx
+#	deleted:    GrandTheftSpaceship-Alpha.gmx/objects/obj_solid.object.gmx
+#	modified:   GrandTheftSpaceship-Alpha.gmx/rooms/rm_test.room.gmx
+#	deleted:    GrandTheftSpaceship-Alpha.gmx/scripts/draw_self_loop_ext.gml
+#	deleted:    GrandTheftSpaceship-Alpha.gmx/scripts/draw_self_position_ext.gml
+#	modified:   GrandTheftSpaceship-Alpha.gmx/sprites/spr_player.sprite.gmx
+#
+
