@@ -23,6 +23,8 @@
     <script>scripts\scr_gen_rect_house.gml</script>
     <script>scripts\scr_check_block_collision.gml</script>
     <script>scripts\scr_name_liquid.gml</script>
+    <script>scripts\draw_self_loop_ext.gml</script>
+    <script>scripts\draw_self_position_ext.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -33,6 +35,7 @@
     <object>objects\obj_branch</object>
     <object>objects\obj_block</object>
     <object>objects\obj_ds</object>
+    <object>objects\obj_solid</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initiate</room>
