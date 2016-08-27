@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>///Initialize Surfaces/Variables
 global.scale = 2;
-global.view_width = 320;
-global.view_height = 256;
+global.view_width = 640;
+global.view_height = 512;
 
 
 

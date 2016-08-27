@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Variables
 
-move_spd = 2;
+move_spd = 3;
 turn_spd = 8;
 
 
