@@ -35,10 +35,7 @@
     <object>objects\obj_branch</object>
     <object>objects\obj_block</object>
     <object>objects\obj_ds</object>
-<<<<<<< HEAD
     <object>objects\obj_controller</object>
-=======
->>>>>>> origin/master
     <object>objects\obj_solid</object>
   </objects>
   <rooms name="rooms">
