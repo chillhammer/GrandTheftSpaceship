@@ -1,4 +1,5 @@
-///Make a square house somewhere on the map
+///scr_gen_square_house(side_length,minx,max,miny,maxy,doors)
+//Make a square house somewhere on the map
 side_length = argument[0];
 min_x = argument[1];
 max_x = argument[2];
@@ -6,15 +7,16 @@ min_y = argument[3];
 max_y = argument[4];
 doors = argument[5];
 
-var placed, doornum, olddoornum, attempts;
+var placed, doornum, olddoornum, attempts, max_attempts;
 placed = false;
 doornum = 0;
 olddoornum = -1;
 attempts = 0;
+max_attempts = 20;
 
 potential_doors = ds_list_create();
 
-while (!placed && attempts < 19)
+while (!placed && attempts < max_attempts)
 {
     //Make the top left corner block
     cornerblock = instance_create(random_range(min_x,max_x), random_range(min_y,max_y), obj_block);
