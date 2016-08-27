@@ -34,12 +34,9 @@
     <object>objects\obj_draw_application</object>
     <object>objects\obj_branch</object>
     <object>objects\obj_block</object>
-<<<<<<< HEAD
     <object>objects\obj_ds</object>
-=======
     <object>objects\obj_controller</object>
     <object>objects\obj_solid</object>
->>>>>>> origin/master
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initiate</room>
