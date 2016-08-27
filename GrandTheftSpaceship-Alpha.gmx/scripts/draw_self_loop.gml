@@ -1,5 +1,6 @@
 ///draw_self_quad
-//will draw himself 4 times in the four views
+//will draw himself 4 times on other side of map
+//used if interacting with border AKA movement
 draw_self_position(x-room_width,y);
 draw_self_position(x+room_width,y);
 

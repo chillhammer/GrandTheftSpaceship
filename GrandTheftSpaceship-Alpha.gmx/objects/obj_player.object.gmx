@@ -27,8 +27,15 @@
             <kind>1</kind>
             <string>///Variables
 
-move_spd = 4;
+move_spd = 2;
+turn_spd = 8;
+
+
+hspd = 0;
+vspd = 0;
 controls_init();
+
+warpFlash = false; //a variable that will flash if recently warped
 </string>
           </argument>
         </arguments>
@@ -51,13 +58,8 @@ controls_init();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Movement
-var hor = controls_key_check(cont_right)-controls_key_check(cont_left);
-var ver = controls_key_check(cont_down)-controls_key_check(cont_up);
-
-
-x += hor*move_spd;
-y += ver*move_spd;
+            <string>///Reset Variables
+warpFlash = false;
 </string>
           </argument>
         </arguments>
@@ -78,10 +80,14 @@ y += ver*move_spd;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Image Angle
-var pd = point_direction(x, y, mouse_x, mouse_y);
-var dd = angle_difference(image_angle, pd);
-image_angle -= min(abs(dd), abs(dd)/5) * sign(dd);
+            <string>///Movement
+var hor = controls_key_check(cont_right)-controls_key_check(cont_left);
+var ver = controls_key_check(cont_down)-controls_key_check(cont_up);
+
+hspd = hor*move_spd;
+vspd = ver*move_spd;
+x += hspd;
+y += vspd;
 </string>
           </argument>
         </arguments>
@@ -104,13 +110,45 @@ image_angle -= min(abs(dd), abs(dd)/5) * sign(dd);
             <kind>1</kind>
             <string>///Warp PLayer
 var pad = move_spd;
-if(x &gt; room_width) x = pad;
 
-if(x &lt; 0) x = room_width-pad;
+if( x &gt; room_width || x &lt; 0 || y &gt; room_height || y &lt; 0){
+    warpFlash = true;
+    
+    if(x &gt; room_width) x = pad;
 
-if(y &gt; room_height) y = pad;
+    if(x &lt; 0) x = room_width-pad;
+    
+    if(y &gt; room_height) y = pad;
+    
+    if(y &lt; 0) y = room_height-pad;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Image Angle &amp; Turning
 
-if(y &lt; 0) y = room_height-pad;
+if(!warpFlash){
+    var pd = point_to_mouse(x,y);
+    var dd = angle_difference(image_angle, pd);
+    image_angle -= min(abs(dd), abs(dd)/turn_spd) * sign(dd);
+}
 </string>
           </argument>
         </arguments>
@@ -137,7 +175,7 @@ if(y &lt; 0) y = room_height-pad;
 
 draw_self();
 
-draw_self_quad();
+draw_self_loop();
 </string>
           </argument>
         </arguments>

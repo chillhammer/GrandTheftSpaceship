@@ -48,7 +48,8 @@ randomize();
           <argument>
             <kind>1</kind>
             <string>///Randomly select bg color
-background_blend = make_colour_hsv(random(55)+200, random(55)+200, random(255));
+var minCol = 70;
+background_blend = make_colour_hsv(random(minCol)+200, random(minCol)+200, random(255));
 </string>
           </argument>
         </arguments>

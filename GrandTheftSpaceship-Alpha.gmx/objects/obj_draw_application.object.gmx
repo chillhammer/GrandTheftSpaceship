@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>///Initialize Surfaces/Variables
 
-for (i=VIEW_RIGHT; i&lt;=VIEW_TOP; i+=1)
+for (i=VIEW_RIGHT; i&lt;=VIEW_ENTIRE; i+=1)
 {
     //creates 4 surfaces for borders
-    if(view_visible[i]){
+    if(view_visible[i] || i == VIEW_ENTIRE){
         surf[i]=surface_create(view_wview[i],view_hview[i]);
         view_surface_id[i] = surf[i];
     }
@@ -41,34 +41,7 @@ for (i=VIEW_RIGHT; i&lt;=VIEW_TOP; i+=1)
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Draw Border Surfaces
-draw_surface(surf[VIEW_RIGHT],room_width,view_yview[VIEW_CAMERA]);
-draw_surface(surf[VIEW_BOTTOM],view_xview[VIEW_CAMERA],room_height);
-
-draw_surface(surf[VIEW_LEFT],-view_wview[VIEW_LEFT],view_yview[VIEW_CAMERA]);
-draw_surface(surf[VIEW_TOP],view_xview[VIEW_CAMERA],-view_hview[VIEW_TOP]);
-
-</string>
-          </argument>
-        </arguments>
-      </action>
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -107,6 +80,85 @@ view_yview[VIEW_LEFT] = view_yview[VIEW_CAMERA];
 //view 4
 view_xview[VIEW_TOP] = view_xview[VIEW_CAMERA];
 view_yview[VIEW_TOP] = room_height-view_hview[VIEW_BOTTOM];
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Free Surfaces
+
+for (i=0; i&lt;array_length_1d(surf); i+=1)
+{
+    surface_free(surf[i]);
+};
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw Border Surfaces
+var hview, wview, xview, yview;
+hview = view_hview[VIEW_CAMERA];
+wview = view_wview[VIEW_CAMERA];
+
+xview = view_xview[VIEW_CAMERA];
+yview = view_yview[VIEW_CAMERA];
+
+
+draw_surface(surf[VIEW_RIGHT],room_width,yview);
+draw_surface(surf[VIEW_BOTTOM],xview,room_height);
+
+draw_surface(surf[VIEW_LEFT],-view_wview[VIEW_LEFT],yview);
+draw_surface(surf[VIEW_TOP],xview,-view_hview[VIEW_TOP]);
+
+
+//topright
+draw_surface_part(surf[VIEW_ENTIRE],0,view_hview[VIEW_ENTIRE]-hview,wview,hview,room_width,-hview);
+
+//botright
+draw_surface_part(surf[VIEW_ENTIRE],0,0,wview,hview,room_width,room_height);
+
+//botleft
+draw_surface_part(surf[VIEW_ENTIRE],view_wview[VIEW_ENTIRE]-wview,0,wview,hview,-wview,room_height);
+
+//topleft
+draw_surface_part(surf[VIEW_ENTIRE],view_wview[VIEW_ENTIRE]-wview,view_hview[VIEW_ENTIRE]-hview,wview,hview,-wview,-hview);
 </string>
           </argument>
         </arguments>
