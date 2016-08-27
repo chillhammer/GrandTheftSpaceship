@@ -26,16 +26,13 @@
     <object>objects\obj_test</object>
     <object>objects\obj_generator</object>
     <object>objects\obj_draw_application</object>
+    <object>objects\obj_branch</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="6">
+  <constants number="2">
     <constant name="VIEW_CAMERA">0</constant>
-    <constant name="VIEW_RIGHT">1</constant>
-    <constant name="VIEW_BOTTOM">2</constant>
-    <constant name="VIEW_LEFT">3</constant>
-    <constant name="VIEW_TOP">4</constant>
     <constant name="VIEW_ENTIRE">5</constant>
   </constants>
   <help>
