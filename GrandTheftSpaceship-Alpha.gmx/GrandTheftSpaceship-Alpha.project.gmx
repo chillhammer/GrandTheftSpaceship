@@ -8,6 +8,7 @@
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_test</sprite>
+    <sprite>sprites\spr_block</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_gts</background>
@@ -19,12 +20,13 @@
     <script>scripts\draw_self_position.gml</script>
     <script>scripts\draw_self_loop.gml</script>
     <script>scripts\point_to_mouse.gml</script>
+    <script>scripts\scr_gen_square_house.gml</script>
+    <script>scripts\scr_check_block_collision.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_test</object>
-<<<<<<< HEAD
     <object>objects\obj_draw_application</object>
 <<<<<<< HEAD
     <object>objects\obj_block</object>
@@ -32,10 +34,6 @@
 =======
     <object>objects\obj_branch</object>
 >>>>>>> origin/master
-=======
-    <object>objects\obj_generator</object>
-    <object>objects\obj_draw_application</object>
->>>>>>> parent of 23ff26b... First Stage of Generation
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
