@@ -29,7 +29,8 @@
     <object>objects\obj_branch</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\rm_initiate</room>
+    <room>rooms\rm_test</room>
   </rooms>
   <constants number="2">
     <constant name="VIEW_CAMERA">0</constant>

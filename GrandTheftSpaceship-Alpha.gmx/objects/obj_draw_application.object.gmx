@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -26,37 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize Surfaces/Variables
-surf[VIEW_ENTIRE]=surface_create(view_wview[VIEW_ENTIRE],view_hview[VIEW_ENTIRE]);
-view_surface_id[VIEW_ENTIRE] = surf[VIEW_ENTIRE];
+global.scale = 2;
+global.view_width = 320;
+global.view_height = 256;
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Moving Views
 
-if(instance_exists(obj_camera)){
-    view_xview[VIEW_CAMERA] = obj_camera.x - view_wview[VIEW_CAMERA]*0.5;
-    view_yview[VIEW_CAMERA] = obj_camera.y - view_hview[VIEW_CAMERA]*0.5;
-}
+
+map_surface = -1;
+
+
 </string>
           </argument>
         </arguments>
@@ -81,12 +59,50 @@ if(instance_exists(obj_camera)){
             <kind>1</kind>
             <string>///Free Surfaces
 
-for (i=0; i&lt;array_length_1d(surf); i+=1)
-{
-    surface_free(surf[i]);
-};
+if( map_surface &gt; 0 )
+    surface_free(map_surface);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Update Window Size
+
+view_wview[VIEW_CAMERA]=global.view_width;
+view_hview[VIEW_CAMERA]=global.view_height;
+
+view_wport[VIEW_CAMERA]=global.view_width*global.scale;
+view_hport[VIEW_CAMERA]=global.view_height*global.scale;
+
+view_wview[VIEW_ENTIRE]=room_width;
+view_hview[VIEW_ENTIRE]=room_height;
 
 
+if(view_visible[VIEW_ENTIRE]){
+    map_surface = surface_create(view_wview[VIEW_ENTIRE],view_hview[VIEW_ENTIRE]);
+    view_surface_id[VIEW_ENTIRE] = map_surface;
+}
+
+
+//ssssswindow_set_size(view_wport[VIEW_CAMERA],view_hport[VIEW_CAMERA]);
 </string>
           </argument>
         </arguments>
@@ -110,39 +126,42 @@ for (i=0; i&lt;array_length_1d(surf); i+=1)
           <argument>
             <kind>1</kind>
             <string>///Draw Border Surfaces
-var hview, wview, xview, yview;
-hview = view_hview[VIEW_CAMERA];
-wview = view_wview[VIEW_CAMERA];
+if(surface_exists(map_surface)){
+    var hview, wview, xview, yview;
+    hview = view_hview[VIEW_CAMERA];
+    wview = view_wview[VIEW_CAMERA];
+    
+    xview = view_xview[VIEW_CAMERA];
+    yview = view_yview[VIEW_CAMERA];
+    
+    
+    //right
+    draw_surface_part(map_surface,0,0,wview,room_height,room_width,0);
+    
+    //left
+    draw_surface_part(map_surface,room_width-wview,0,wview,room_height,-wview,0);
+    
+    //bottom
+    draw_surface_part(map_surface,0,0,room_width,hview,0,room_height);
+    
+    //top
+    draw_surface_part(map_surface,0,room_height-hview,room_width,hview,0,-hview);
+    
+    
+    
+    //topright
+    draw_surface_part(map_surface,0,view_hview[VIEW_ENTIRE]-hview,wview,hview,room_width,-hview);
+    
+    //botright
+    draw_surface_part(map_surface,0,0,wview,hview,room_width,room_height);
+    
+    //botleft
+    draw_surface_part(map_surface,view_wview[VIEW_ENTIRE]-wview,0,wview,hview,-wview,room_height);
+    
+    //topleft
+    draw_surface_part(map_surface,view_wview[VIEW_ENTIRE]-wview,view_hview[VIEW_ENTIRE]-hview,wview,hview,-wview,-hview);
 
-xview = view_xview[VIEW_CAMERA];
-yview = view_yview[VIEW_CAMERA];
-
-
-//right
-draw_surface_part(surf[VIEW_ENTIRE],0,0,wview,room_height,room_width,0);
-
-//left
-draw_surface_part(surf[VIEW_ENTIRE],room_width-wview,0,wview,room_height,-wview,0);
-
-//bottom
-draw_surface_part(surf[VIEW_ENTIRE],0,0,room_width,hview,0,room_height);
-
-//top
-draw_surface_part(surf[VIEW_ENTIRE],0,room_height-hview,room_width,hview,0,-hview);
-
-
-
-//topright
-draw_surface_part(surf[VIEW_ENTIRE],0,view_hview[VIEW_ENTIRE]-hview,wview,hview,room_width,-hview);
-
-//botright
-draw_surface_part(surf[VIEW_ENTIRE],0,0,wview,hview,room_width,room_height);
-
-//botleft
-draw_surface_part(surf[VIEW_ENTIRE],view_wview[VIEW_ENTIRE]-wview,0,wview,hview,-wview,room_height);
-
-//topleft
-draw_surface_part(surf[VIEW_ENTIRE],view_wview[VIEW_ENTIRE]-wview,view_hview[VIEW_ENTIRE]-hview,wview,hview,-wview,-hview);
+}
 </string>
           </argument>
         </arguments>
