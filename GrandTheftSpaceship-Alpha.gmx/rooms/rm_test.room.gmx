@@ -57,13 +57,8 @@
     <instance objName="obj_test" x="96" y="416" name="inst_DA12CCF9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="593" y="441" name="inst_8DC75C4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="518" y="10" name="inst_1314058E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-<<<<<<< HEAD:GrandTheftSpaceship-Alpha.gmx/rooms/room0.room.gmx
-    <instance objName="obj_draw_application" x="96" y="32" name="inst_3A8BB1D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-=======
     <instance objName="obj_generator" x="0" y="0" name="inst_E8834EFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
->>>>>>> origin/master:GrandTheftSpaceship-Alpha.gmx/rooms/rm_test.room.gmx
     <instance objName="obj_test" x="32" y="256" name="inst_616703D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_generator" x="32" y="32" name="inst_A7B0D2C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
