@@ -16,19 +16,25 @@
   <scripts name="scripts">
     <script>scripts\controls_init.gml</script>
     <script>scripts\controls_key_check.gml</script>
-    <script>scripts\script2.gml</script>
+    <script>scripts\draw_self_position.gml</script>
+    <script>scripts\draw_self_quad.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_test</object>
     <object>objects\obj_generator</object>
+    <object>objects\obj_draw_application</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="1">
+  <constants number="5">
     <constant name="VIEW_CAMERA">0</constant>
+    <constant name="VIEW_RIGHT">1</constant>
+    <constant name="VIEW_BOTTOM">2</constant>
+    <constant name="VIEW_LEFT">3</constant>
+    <constant name="VIEW_TOP">4</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
