@@ -20,7 +20,7 @@
     <script>scripts\draw_self_position.gml</script>
     <script>scripts\draw_self_loop.gml</script>
     <script>scripts\point_to_mouse.gml</script>
-    <script>scripts\scr_gen_square_house.gml</script>
+    <script>scripts\scr_gen_rect_house.gml</script>
     <script>scripts\scr_check_block_collision.gml</script>
   </scripts>
   <objects name="objects">

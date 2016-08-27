@@ -72,9 +72,10 @@ background_blend = make_colour_hsv(random(min_col)+255-min_col, random(min_col)+
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Generate a square house
-var side_length = 3 + irandom(3);
-scr_gen_square_house(side_length, 32, room_width - 32*(side_length+1), 32, room_height - 32*(side_length+1), 1);
+            <string>///Generate a rectangle house
+var length = 3 + irandom(3);
+var height = 3 + irandom(3);
+scr_gen_rect_house(length, height, 32, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
 </string>
           </argument>
         </arguments>

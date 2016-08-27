@@ -1,11 +1,12 @@
-///scr_gen_square_house(side_length,minx,max,miny,maxy,doors)
+///scr_gen_square_house(length,minx,max,miny,maxy,doors)
 //Make a square house somewhere on the map
-side_length = argument[0];
-min_x = argument[1];
-max_x = argument[2];
-min_y = argument[3];
-max_y = argument[4];
-doors = argument[5];
+length = argument[0];
+height = argument[1];
+min_x = argument[2];
+max_x = argument[3];
+min_y = argument[4];
+max_y = argument[5];
+doors = argument[6];
 
 var placed, doornum, olddoornum, attempts, max_attempts;
 placed = false;
@@ -22,18 +23,20 @@ while (!placed && attempts < max_attempts)
     cornerblock = instance_create(random_range(min_x,max_x), random_range(min_y,max_y), obj_block);
     
     //Make the other corners
-    var crn2 = instance_create(cornerblock.x + (side_length-1)*cornerblock.sprite_width, cornerblock.y, obj_block);
-    var crn3 = instance_create(cornerblock.x, cornerblock.y + (side_length-1)*cornerblock.sprite_height, obj_block);
-    var crn4 = instance_create(cornerblock.x + (side_length-1)*cornerblock.sprite_width, cornerblock.y + (side_length-1)*cornerblock.sprite_height, obj_block);
+    var crn2 = instance_create(cornerblock.x + (length-1)*cornerblock.sprite_width, cornerblock.y, obj_block);
+    var crn3 = instance_create(cornerblock.x, cornerblock.y + (height-1)*cornerblock.sprite_height, obj_block);
+    var crn4 = instance_create(cornerblock.x + (length-1)*cornerblock.sprite_width, cornerblock.y + (height-1)*cornerblock.sprite_height, obj_block);
     
-    //Make the rest of the square
-    for (i = 1; i <= side_length - 2; i++)
+    //Make the rest of the rect
+    for (i = 1; i <= length - 2; i++)
     {
-        //Start the array if this is the first one
         ds_list_add(potential_doors, instance_create(cornerblock.x + cornerblock.sprite_width*i, cornerblock.y, obj_block));    
+        ds_list_add(potential_doors, instance_create(cornerblock.x + cornerblock.sprite_width*i, crn3.y, obj_block));
+    }
+    for (i = 1; i <= height - 2; i++)
+    {   
         ds_list_add(potential_doors, instance_create(cornerblock.x, cornerblock.y + cornerblock.sprite_height*i, obj_block));
         ds_list_add(potential_doors, instance_create(crn2.x, cornerblock.y + cornerblock.sprite_height*i, obj_block));
-        ds_list_add(potential_doors, instance_create(cornerblock.x + cornerblock.sprite_width*i, crn3.y, obj_block));
     }
     
     //Ensure the house is collision free, if not, start again!
@@ -56,7 +59,7 @@ while (!placed && attempts < max_attempts)
 //Throw a failure message
 if (attempts == 20)
 {
-    show_debug_message("Attempted 20 times to place house with side_length of " + string(side_length) + "and failed.");
+    show_debug_message("Attempted 20 times to place house with length of " + string(length) + " and height of " + string(height) + " and failed.");
     exit;
 }
 
