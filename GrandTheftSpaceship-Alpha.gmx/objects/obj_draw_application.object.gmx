@@ -26,15 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize Surfaces/Variables
-
-for (i=VIEW_RIGHT; i&lt;=VIEW_ENTIRE; i+=1)
-{
-    //creates 4 surfaces for borders
-    if(view_visible[i] || i == VIEW_ENTIRE){
-        surf[i]=surface_create(view_wview[i],view_hview[i]);
-        view_surface_id[i] = surf[i];
-    }
-};
+surf[VIEW_ENTIRE]=surface_create(view_wview[VIEW_ENTIRE],view_hview[VIEW_ENTIRE]);
+view_surface_id[VIEW_ENTIRE] = surf[VIEW_ENTIRE];
 
 </string>
           </argument>
@@ -64,22 +57,6 @@ if(instance_exists(obj_camera)){
     view_xview[VIEW_CAMERA] = obj_camera.x - view_wview[VIEW_CAMERA]*0.5;
     view_yview[VIEW_CAMERA] = obj_camera.y - view_hview[VIEW_CAMERA]*0.5;
 }
-
-//view 1
-view_xview[VIEW_RIGHT] = 0;
-view_yview[VIEW_RIGHT] = view_yview[VIEW_CAMERA];
-
-//view 2
-view_xview[VIEW_BOTTOM] = view_xview[VIEW_CAMERA];
-view_yview[VIEW_BOTTOM] = 0;
-
-//view 3
-view_xview[VIEW_LEFT] = room_width-view_wview[VIEW_LEFT];
-view_yview[VIEW_LEFT] = view_yview[VIEW_CAMERA];
-
-//view 4
-view_xview[VIEW_TOP] = view_xview[VIEW_CAMERA];
-view_yview[VIEW_TOP] = room_height-view_hview[VIEW_BOTTOM];
 </string>
           </argument>
         </arguments>
@@ -141,11 +118,18 @@ xview = view_xview[VIEW_CAMERA];
 yview = view_yview[VIEW_CAMERA];
 
 
-draw_surface(surf[VIEW_RIGHT],room_width,yview);
-draw_surface(surf[VIEW_BOTTOM],xview,room_height);
+//right
+draw_surface_part(surf[VIEW_ENTIRE],0,0,wview,room_height,room_width,0);
 
-draw_surface(surf[VIEW_LEFT],-view_wview[VIEW_LEFT],yview);
-draw_surface(surf[VIEW_TOP],xview,-view_hview[VIEW_TOP]);
+//left
+draw_surface_part(surf[VIEW_ENTIRE],room_width-wview,0,wview,room_height,-wview,0);
+
+//bottom
+draw_surface_part(surf[VIEW_ENTIRE],0,0,room_width,hview,0,room_height);
+
+//top
+draw_surface_part(surf[VIEW_ENTIRE],0,room_height-hview,room_width,hview,0,-hview);
+
 
 
 //topright
