@@ -64,7 +64,7 @@ if (attempts == 20)
 }
 
 
-//Remove doors and we're done!
+//Remove doors, add floors, and we're done!
 for (i = 1; i <= doors; i++)
 {
     do  {
@@ -74,6 +74,14 @@ for (i = 1; i <= doors; i++)
     with (ds_list_find_value(potential_doors, doornum))
         instance_destroy();
     olddoornum = doornum;
+}
+for (h = 0; h < length + 2; h++)
+{
+    for (v = 0; v < height + 2; v++)
+    {
+        created = instance_create(cornerblock.x - cornerblock.sprite_width + (cornerblock.sprite_width*h), cornerblock.y - cornerblock.sprite_height + (cornerblock.sprite_height*v), obj_floor);
+        created.sprite_index = cornerblock.sprite_index;
+    }
 }
 
 //Return the cornerblock in case you wanted to do something with it

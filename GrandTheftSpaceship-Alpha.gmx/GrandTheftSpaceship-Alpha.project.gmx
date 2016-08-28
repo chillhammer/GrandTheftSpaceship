@@ -40,6 +40,7 @@
     <object>objects\obj_block</object>
     <object>objects\obj_ds</object>
     <object>objects\obj_solid</object>
+    <object>objects\obj_floor</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initiate</room>
