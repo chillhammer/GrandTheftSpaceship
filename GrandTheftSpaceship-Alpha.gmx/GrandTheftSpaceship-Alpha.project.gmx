@@ -3,7 +3,10 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <datafiles number="1" name="datafiles"/>
+  <NewExtensions>
+    <extension index="0">extensions\Totro - Random Name Generator</extension>
+  </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
@@ -25,6 +28,7 @@
     <script>scripts\scr_name_liquid.gml</script>
     <script>scripts\draw_self_loop_ext.gml</script>
     <script>scripts\draw_self_position_ext.gml</script>
+    <script>scripts\totro.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
