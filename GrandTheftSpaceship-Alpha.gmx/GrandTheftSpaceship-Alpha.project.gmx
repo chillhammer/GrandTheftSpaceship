@@ -16,7 +16,9 @@
   <backgrounds name="background">
     <background>background\bg_gts</background>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\pth_test</path>
+  </paths>
   <scripts name="scripts">
     <script>scripts\controls_init.gml</script>
     <script>scripts\controls_key_check.gml</script>

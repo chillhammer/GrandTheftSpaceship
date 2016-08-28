@@ -59,10 +59,11 @@ while (!placed && attempts < max_attempts)
 //Throw a failure message
 if (attempts == 20)
 {
-    show_debug_message("Attempted 20 times to place house with length of " + string(length) + " and height of " + string(height) + " and failed.");
+    show_debug_message("Attempted 20 times to place house with length of " + string(length) + " and height of " + string(height) + " and failed due to: couldn't find free placement.");
     exit;
 }
 
+attempts = 0;
 
 //Remove doors and we're done!
 for (i = 1; i <= doors; i++)
@@ -72,8 +73,26 @@ for (i = 1; i <= doors; i++)
     }   until (olddoornum != doornum);
         
     with (ds_list_find_value(potential_doors, doornum))
-        instance_destroy();
+    {  
+        xprev = x;
+        x = -32;
+        
+    }
+    if (!mp_potential_path_object(pth_test, cornerblock.x+32, cornerblock.y+32, obj_player.move_spd, 4, obj_player))
+    {
+        with (ds_list_find_value(potential_doors, doornum))
+            x = xprev;
+            
+        i --;
+        attempts ++;
+    }
     olddoornum = doornum;
+    
+    if (attempts == 20)
+    {
+        show_debug_message("We couldn't finnagle the doors to work.");
+        exit;
+    }
 }
 
 //Return the cornerblock in case you wanted to do something with it
