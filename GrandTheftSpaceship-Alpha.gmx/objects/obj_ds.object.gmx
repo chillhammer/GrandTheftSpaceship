@@ -25,6 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Randomize seed
+randomize();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Create the liquidgrid
 global.liquidgrid = ds_grid_create(1,3);
 var liquid1 = scr_name_liquid();
@@ -40,6 +62,42 @@ ds_grid_add(global.liquidgrid, 0, 2, liquid3);
 
 for (i = 0; i &lt; 10; i++)
     show_debug_message(scr_name_liquid());
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create the factiongrid
+global.factiongrid = ds_grid_create(3,3);
+var faction1 = string(totro(3,6,1));
+var faction2 = string(totro(3,6,1));
+var faction3 = string(totro(3,6,1));
+
+/* CURRENT STATE OF THE MAP:
+4 columns (0: name, 1: legs, 2: mass, 3: speed), 3 rows (0:faction1, 1:faction2, etc) */
+
+for (i = 0; i &lt;= 2; i++)
+{
+    ds_grid_add(global.factiongrid, 0, i, string_letters(faction1));
+    ds_grid_add(global.factiongrid, 1, i, round(random_range(0,3)) + round(random_range(0,3)));
+    ds_grid_add(global.factiongrid, 2, i, random_range(1,90) + random_range(1,90));
+    ds_grid_add(global.factiongrid, 3, i, max(ds_grid_get(global.factiongrid,1,i) + (6 - ds_grid_get(global.factiongrid,1,i)/30), .2));
+}
 </string>
           </argument>
         </arguments>
