@@ -98,6 +98,9 @@ view_hview[VIEW_ENTIRE]=room_height;
 
 if(view_visible[VIEW_ENTIRE]){
     map_surface = surface_create(view_wview[VIEW_ENTIRE],view_hview[VIEW_ENTIRE]);
+    surface_set_target(map_surface);
+    draw_clear_alpha(c_black, 0);
+    surface_reset_target();
     view_surface_id[VIEW_ENTIRE] = map_surface;
 }
 
@@ -161,6 +164,12 @@ if(surface_exists(map_surface)){
     //topleft
     draw_surface_part(map_surface,view_wview[VIEW_ENTIRE]-wview,view_hview[VIEW_ENTIRE]-hview,wview,hview,-wview,-hview);
 
+}else{
+    map_surface = surface_create(view_wview[VIEW_ENTIRE],view_hview[VIEW_ENTIRE]);
+    surface_set_target(map_surface);
+    draw_clear_alpha(c_black, 0);
+    surface_reset_target();
+    view_surface_id[VIEW_ENTIRE] = map_surface;
 }
 </string>
           </argument>
