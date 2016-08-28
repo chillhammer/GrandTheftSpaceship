@@ -29,6 +29,9 @@
     <script>scripts\draw_self_loop_ext.gml</script>
     <script>scripts\draw_self_position_ext.gml</script>
     <script>scripts\totro.gml</script>
+    <script>scripts\random_2d_smooth.gml</script>
+    <script>scripts\random_with_chunk.gml</script>
+    <script>scripts\get_planet_color.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -41,14 +44,16 @@
     <object>objects\obj_ds</object>
     <object>objects\obj_solid</object>
     <object>objects\obj_floor</object>
+    <object>objects\obj_planet_controller</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initiate</room>
     <room>rooms\rm_test</room>
   </rooms>
-  <constants number="2">
+  <constants number="3">
     <constant name="VIEW_CAMERA">0</constant>
     <constant name="VIEW_ENTIRE">5</constant>
+    <constant name="MAX_HEIGHT">100</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
