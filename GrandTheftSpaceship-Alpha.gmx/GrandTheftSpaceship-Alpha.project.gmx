@@ -35,7 +35,6 @@
     <object>objects\obj_branch</object>
     <object>objects\obj_block</object>
     <object>objects\obj_ds</object>
-    <object>objects\obj_controller</object>
     <object>objects\obj_solid</object>
   </objects>
   <rooms name="rooms">
