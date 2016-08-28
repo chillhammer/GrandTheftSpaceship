@@ -138,10 +138,30 @@ var ver = controls_key_check(cont_down)-controls_key_check(cont_up);
 
 hspd = hor*move_spd;
 vspd = ver*move_spd;
-if(!place_meeting(x+hspd,y,obj_solid))
+
+var noWaterTileHor = true;
+var noWaterTileVer = true;
+if(instance_exists(obj_planet_controller)){
+    var pc = obj_planet_controller;
+    var xx = x div pc.block_size;
+    var yy = y div pc.block_size;
+    var block_hspd = sign(hspd)*2;
+    var block_vspd = sign(vspd)*2;
+    //check for water horizontally
+    if(pc.terrain_grid[# xx+block_hspd,yy] &lt; pc.water_level){
+        noWaterTileHor = false;
+    }
+    //check for water vertically
+    if(pc.terrain_grid[# xx,yy+block_vspd] &lt; pc.water_level){
+        noWaterTileVer = false;
+    }
+}
+
+
+if(!place_meeting(x+hspd,y,obj_solid) &amp;&amp; noWaterTileHor)
     x += hspd;
     
-if(!place_meeting(x,y+vspd,obj_solid))
+if(!place_meeting(x,y+vspd,obj_solid) &amp;&amp; noWaterTileVer)
     y += vspd;
 
 </string>
