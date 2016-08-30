@@ -48,20 +48,20 @@ randomize();
           <argument>
             <kind>1</kind>
             <string>///Create the liquidgrid
-global.liquidgrid = ds_grid_create(1,3);
-var liquid1 = scr_name_liquid();
-var liquid2 = scr_name_liquid();
-var liquid3 = scr_name_liquid();
+global.liquidgrid = ds_grid_create(2,3);
+var liquid;
+liquid[1] = scr_name_liquid();
+liquid[2] = scr_name_liquid();
+liquid[3] = scr_name_liquid();
 
 /* CURRENT STATE OF THE MAP:
-1 column (0: name), 3 rows (0:liquid1, 1:liquid2, etc) */
+2 columns (0: name, 1: color), 3 rows (0:liquid1, 1:liquid2, etc) */
 
-ds_grid_add(global.liquidgrid, 0, 0, liquid1);
-ds_grid_add(global.liquidgrid, 0, 1, liquid2);
-ds_grid_add(global.liquidgrid, 0, 2, liquid3);
-
-for (i = 0; i &lt; 10; i++)
-    show_debug_message(scr_name_liquid());
+for (i = 0; i &lt;= 2; i++)
+{
+    ds_grid_add(global.liquidgrid, 0, i, liquid[i+1]);
+    ds_grid_add(global.liquidgrid, 1, i, make_color_hsv(random(255), random(155)+100, random(55) + 200));
+}
 </string>
           </argument>
         </arguments>
@@ -84,16 +84,17 @@ for (i = 0; i &lt; 10; i++)
             <kind>1</kind>
             <string>///Create the factiongrid
 global.factiongrid = ds_grid_create(5,3);
-var faction1 = string(totro(3,6,1));
-var faction2 = string(totro(3,6,1));
-var faction3 = string(totro(3,6,1));
+var faction;
+faction[1] = string(totro(3,6,1));
+faction[2] = string(totro(3,6,1));
+faction[3] = string(totro(3,6,1));
 
 /* CURRENT STATE OF THE MAP:
 5 columns (0: name, 1: legs, 2: mass, 3: speed, 4:color), 3 rows (0:faction1, 1:faction2, etc) */
 
 for (i = 0; i &lt;= 2; i++)
 {
-    ds_grid_add(global.factiongrid, 0, i, string_letters(faction1));
+    ds_grid_add(global.factiongrid, 0, i, string_letters(faction[i+1]));
     ds_grid_add(global.factiongrid, 1, i, round(random_range(0,3)) + round(random_range(0,3)));
     ds_grid_add(global.factiongrid, 2, i, random_range(1,90) + random_range(1,90));
     ds_grid_add(global.factiongrid, 3, i, max(ds_grid_get(global.factiongrid,1,i) + (6 - ds_grid_get(global.factiongrid,1,i)/30), .2));
