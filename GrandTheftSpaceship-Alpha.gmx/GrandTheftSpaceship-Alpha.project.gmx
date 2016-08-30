@@ -12,6 +12,7 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_test</sprite>
     <sprite>sprites\spr_block</sprite>
+    <sprite>sprites\spr_alien</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_gts</background>
@@ -37,14 +38,17 @@
     <object>objects\obj_player</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_test</object>
-    <object>objects\obj_generator</object>
-    <object>objects\obj_draw_application</object>
     <object>objects\obj_branch</object>
     <object>objects\obj_block</object>
-    <object>objects\obj_ds</object>
     <object>objects\obj_solid</object>
     <object>objects\obj_floor</object>
-    <object>objects\obj_planet_controller</object>
+    <object>objects\obj_colonist</object>
+    <objects name="Setup, Generation, Controllers">
+      <object>objects\obj_ds</object>
+      <object>objects\obj_generator</object>
+      <object>objects\obj_planet_controller</object>
+      <object>objects\obj_draw_application</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initiate</room>

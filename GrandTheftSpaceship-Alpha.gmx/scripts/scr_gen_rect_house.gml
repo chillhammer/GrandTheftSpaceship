@@ -64,7 +64,7 @@ if (attempts == 20)
 }
 
 
-//Remove doors, add floors, and we're done!
+//Remove doors, add floors
 for (i = 1; i <= doors; i++)
 {
     do  {
@@ -83,6 +83,9 @@ for (h = 0; h < length + 2; h++)
         created.sprite_index = cornerblock.sprite_index;
     }
 }
+
+//What faction resides here?
+cornerblock.faction = irandom(ds_grid_width(global.factiongrid)) - 1;
 
 //Return the cornerblock in case you wanted to do something with it
 return cornerblock;

@@ -83,13 +83,13 @@ for (i = 0; i &lt; 10; i++)
           <argument>
             <kind>1</kind>
             <string>///Create the factiongrid
-global.factiongrid = ds_grid_create(3,3);
+global.factiongrid = ds_grid_create(5,3);
 var faction1 = string(totro(3,6,1));
 var faction2 = string(totro(3,6,1));
 var faction3 = string(totro(3,6,1));
 
 /* CURRENT STATE OF THE MAP:
-4 columns (0: name, 1: legs, 2: mass, 3: speed), 3 rows (0:faction1, 1:faction2, etc) */
+5 columns (0: name, 1: legs, 2: mass, 3: speed, 4:color), 3 rows (0:faction1, 1:faction2, etc) */
 
 for (i = 0; i &lt;= 2; i++)
 {
@@ -97,6 +97,7 @@ for (i = 0; i &lt;= 2; i++)
     ds_grid_add(global.factiongrid, 1, i, round(random_range(0,3)) + round(random_range(0,3)));
     ds_grid_add(global.factiongrid, 2, i, random_range(1,90) + random_range(1,90));
     ds_grid_add(global.factiongrid, 3, i, max(ds_grid_get(global.factiongrid,1,i) + (6 - ds_grid_get(global.factiongrid,1,i)/30), .2));
+    ds_grid_add(global.factiongrid, 4, i, make_color_hsv(random(255), random(35)+220, random(35)+220));
 }
 </string>
           </argument>
