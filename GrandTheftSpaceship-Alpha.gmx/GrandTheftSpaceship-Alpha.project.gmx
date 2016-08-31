@@ -42,6 +42,7 @@
       <script>scripts\simplex_raw4.gml</script>
       <script>scripts\simplex_generate_hash.gml</script>
     </scripts>
+    <script>scripts\choose_ds_list_random.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>

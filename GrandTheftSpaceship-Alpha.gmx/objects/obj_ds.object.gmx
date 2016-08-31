@@ -47,58 +47,48 @@ randomize();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Create the liquidgrid
-global.liquidgrid = ds_grid_create(1,3);
-var liquid1 = scr_name_liquid();
-var liquid2 = scr_name_liquid();
-var liquid3 = scr_name_liquid();
+            <string>///Create Datastructures!
 
-/* CURRENT STATE OF THE MAP:
-1 column (0: name), 3 rows (0:liquid1, 1:liquid2, etc) */
+//amount of something~
+amount_of_liquids = 3;
+amount_of_factions = 3;
 
-ds_grid_add(global.liquidgrid, 0, 0, liquid1);
-ds_grid_add(global.liquidgrid, 0, 1, liquid2);
-ds_grid_add(global.liquidgrid, 0, 2, liquid3);
 
-for (i = 0; i &lt; 10; i++)
-    show_debug_message(scr_name_liquid());
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Create the factiongrid
-global.factiongrid = ds_grid_create(5,3);
-var faction1 = string(totro(3,6,1));
-var faction2 = string(totro(3,6,1));
-var faction3 = string(totro(3,6,1));
-
-/* CURRENT STATE OF THE MAP:
-5 columns (0: name, 1: legs, 2: mass, 3: speed, 4:color), 3 rows (0:faction1, 1:faction2, etc) */
-
-for (i = 0; i &lt;= 2; i++)
+//  LIQUIDS///////////////////////////////
+global.liquids = ds_list_create();
+//properties
+var name, hue;
+for (i=0; i&lt;amount_of_liquids; i+=1)
 {
-    ds_grid_add(global.factiongrid, 0, i, string_letters(faction1));
-    ds_grid_add(global.factiongrid, 1, i, round(random_range(0,3)) + round(random_range(0,3)));
-    ds_grid_add(global.factiongrid, 2, i, random_range(1,90) + random_range(1,90));
-    ds_grid_add(global.factiongrid, 3, i, max(ds_grid_get(global.factiongrid,1,i) + (6 - ds_grid_get(global.factiongrid,1,i)/30), .2));
-    ds_grid_add(global.factiongrid, 4, i, make_color_hsv(random(255), random(35)+220, random(35)+220));
-}
+    global.liquids[| i] = ds_map_create();
+    name = scr_name_liquid();
+    hue = random_range(130,190);
+    show_debug_message(string(name)); //shows all liquids
+    
+    ds_map_add( global.liquids[| i], "name", name );
+    ds_map_add( global.liquids[| i], "hue", hue );
+};
+
+//  FACTIONS/////////////////////////////
+global.factions = ds_list_create();
+//properties
+var name, legs, mass, spd, color;
+for (i=0; i&lt;amount_of_factions; i+=1)
+{
+    global.factions[| i] = ds_map_create();
+    name = string(totro(3,6,1));
+    legs =  irandom(3)+irandom(3);
+    mass = random_range(1,90) + random_range(1,90);
+    spd = max(legs + 6 - mass/30, 0.2);
+    color = make_color_hsv( random(255), 200 + random(55), 200 + random(55) );
+    
+    
+    ds_map_add( global.factions[| i], "name", name );
+    ds_map_add( global.factions[| i], "legs", legs );
+    ds_map_add( global.factions[| i], "mass", mass );
+    ds_map_add( global.factions[| i], "speed", spd );
+    ds_map_add( global.factions[| i], "color", color );
+};
 </string>
           </argument>
         </arguments>
@@ -122,7 +112,8 @@ for (i = 0; i &lt;= 2; i++)
           <argument>
             <kind>1</kind>
             <string>///Destroy ds
-ds_grid_destroy(global.liquidgrid)
+ds_list_destroy(global.liquids)
+ds_list_destroy(global.factions);
 </string>
           </argument>
         </arguments>
