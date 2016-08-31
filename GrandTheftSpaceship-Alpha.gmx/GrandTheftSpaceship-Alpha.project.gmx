@@ -34,6 +34,7 @@
     <script>scripts\random_2d_smooth_loop.gml</script>
     <script>scripts\random_with_chunk.gml</script>
     <script>scripts\get_planet_color.gml</script>
+    <script>scripts\gauss.gml</script>
     <scripts name="simplex functions">
       <script>scripts\simplex_generate_grad4.gml</script>
       <script>scripts\simplex_dot4.gml</script>
@@ -54,10 +55,10 @@
     <object>objects\obj_floor</object>
     <object>objects\obj_colonist</object>
     <objects name="Setup, Generation, Controllers">
-      <object>objects\obj_ds</object>
       <object>objects\obj_generator</object>
       <object>objects\obj_planet_controller</object>
       <object>objects\obj_draw_application</object>
+      <object>objects\obj_ds</object>
     </objects>
   </objects>
   <rooms name="rooms">
