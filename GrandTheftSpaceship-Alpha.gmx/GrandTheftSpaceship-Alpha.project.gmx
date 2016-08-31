@@ -34,9 +34,7 @@
     <script>scripts\random_2d_smooth_loop.gml</script>
     <script>scripts\random_with_chunk.gml</script>
     <script>scripts\get_planet_color.gml</script>
-<<<<<<< HEAD
     <script>scripts\gauss.gml</script>
-=======
     <scripts name="simplex functions">
       <script>scripts\simplex_generate_grad4.gml</script>
       <script>scripts\simplex_dot4.gml</script>
@@ -45,7 +43,6 @@
       <script>scripts\simplex_raw4.gml</script>
       <script>scripts\simplex_generate_hash.gml</script>
     </scripts>
->>>>>>> origin/master
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
