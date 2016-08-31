@@ -55,10 +55,10 @@
     <object>objects\obj_floor</object>
     <object>objects\obj_colonist</object>
     <objects name="Setup, Generation, Controllers">
+      <object>objects\obj_ds</object>
       <object>objects\obj_generator</object>
       <object>objects\obj_planet_controller</object>
       <object>objects\obj_draw_application</object>
-      <object>objects\obj_ds</object>
     </objects>
   </objects>
   <rooms name="rooms">

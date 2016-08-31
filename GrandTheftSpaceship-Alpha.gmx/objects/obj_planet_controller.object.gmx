@@ -33,7 +33,7 @@ block_size = 16;
 
 water_level = choose(30,30,40,40,40,50,60); // any elevation[0-100] below this is water
 
-liquid = global.liquids[| choose_ds_list_random(global.liquids) ];
+liquid = choose_ds_list_random(global.liquids);
 
 //water_hue = random_range(130,190);  its in global.liquids now
 water_hue = liquid[? "hue"];

@@ -158,11 +158,11 @@ if(instance_exists(obj_planet_controller)){
 }
 
 
-if(!place_meeting(x+hspd,y,obj_solid) &amp;&amp; noWaterTileHor)
-    x += hspd;
+if(!place_meeting(x+hspd,y,obj_solid))
+    x += hspd * (1-( (1-obj_planet_controller.liquid[? "speedmod"])*!noWaterTileHor ));
     
-if(!place_meeting(x,y+vspd,obj_solid) &amp;&amp; noWaterTileVer)
-    y += vspd;
+if(!place_meeting(x,y+vspd,obj_solid))
+    y += vspd * (1-( (1-obj_planet_controller.liquid[? "speedmod"])*!noWaterTileVer ));
 
 </string>
           </argument>
