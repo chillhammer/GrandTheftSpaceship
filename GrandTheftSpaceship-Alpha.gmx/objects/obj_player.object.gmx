@@ -28,7 +28,7 @@
             <string>///Variables
 
 move_spd = 3;
-turn_spd = 8;
+turn_spd = 6; //smaller is faster
 
 
 hspd = 0;

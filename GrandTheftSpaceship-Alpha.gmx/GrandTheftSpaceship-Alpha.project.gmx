@@ -31,8 +31,17 @@
     <script>scripts\draw_self_position_ext.gml</script>
     <script>scripts\totro.gml</script>
     <script>scripts\random_2d_smooth.gml</script>
+    <script>scripts\random_2d_smooth_loop.gml</script>
     <script>scripts\random_with_chunk.gml</script>
     <script>scripts\get_planet_color.gml</script>
+    <scripts name="simplex functions">
+      <script>scripts\simplex_generate_grad4.gml</script>
+      <script>scripts\simplex_dot4.gml</script>
+      <script>scripts\simplex_generate_simplex4.gml</script>
+      <script>scripts\simplex_octave4.gml</script>
+      <script>scripts\simplex_raw4.gml</script>
+      <script>scripts\simplex_generate_hash.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>

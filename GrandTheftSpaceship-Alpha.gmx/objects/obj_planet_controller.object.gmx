@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Planet Variables
 
-block_size = 8;
+block_size = 16;
 
 // THE FUN VARIABLES
 
@@ -44,7 +44,7 @@ ground_hue = random_range(26,86);
 
 //creates unique seed for planet generation
 randomize();
-seed = random_range(1000000,10000000);
+seed = round(random_range(1000000,10000000));
 
 //creates dimensions using block size
 width = room_width div block_size;
@@ -53,12 +53,14 @@ height = room_height div block_size;
 terrain_grid = ds_grid_create(width, height);
 terrain_surface = -1;
 
-//rows
+
 for (i=0; i&lt;width; i+=1)
 {   //collumns
     for (j=0; j&lt;height; j+=1)
-    {
-        terrain_grid[# i,j] = random_2d_smooth(i, j, MAX_HEIGHT, width, height); //0-100
+    {       
+        //terrain_grid[# i,j] = random_2d_smooth(i, j, MAX_HEIGHT, width, height); //0-100
+        terrain_grid[# i,j] = random_2d_smooth_loop(i, j, MAX_HEIGHT, width, height); //0-100
+        
     };
     
 };
