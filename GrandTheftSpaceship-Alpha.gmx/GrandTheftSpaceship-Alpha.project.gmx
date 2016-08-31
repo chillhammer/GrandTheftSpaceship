@@ -33,6 +33,7 @@
     <script>scripts\random_2d_smooth.gml</script>
     <script>scripts\random_with_chunk.gml</script>
     <script>scripts\get_planet_color.gml</script>
+    <script>scripts\gauss.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
