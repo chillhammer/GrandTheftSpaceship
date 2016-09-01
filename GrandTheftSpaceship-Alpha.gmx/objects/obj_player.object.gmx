@@ -145,8 +145,8 @@ if(instance_exists(obj_planet_controller)){
     var pc = obj_planet_controller;
     var xx = x div pc.block_size;
     var yy = y div pc.block_size;
-    var block_hspd = sign(hspd)*2;
-    var block_vspd = sign(vspd)*2;
+    var block_hspd = sign(hspd)*1;
+    var block_vspd = sign(vspd)*1;
     //check for water horizontally
     if(pc.terrain_grid[# xx+block_hspd,yy] &lt; pc.water_level){
         noWaterTileHor = false;
@@ -155,15 +155,21 @@ if(instance_exists(obj_planet_controller)){
     if(pc.terrain_grid[# xx,yy+block_vspd] &lt; pc.water_level){
         noWaterTileVer = false;
     }
+    
+    //water speed mod
+    hspd *= 1-( (1-pc.liquid[? "speedmod"])*!noWaterTileHor );
+    vspd *= (1-( (1-pc.liquid[? "speedmod"])*!noWaterTileVer ));
 }
 
 
 if(!place_meeting(x+hspd,y,obj_solid))
-    x += hspd * (1-( (1-obj_planet_controller.liquid[? "speedmod"])*!noWaterTileHor ));
+    x += hspd;
     
 if(!place_meeting(x,y+vspd,obj_solid))
-    y += vspd * (1-( (1-obj_planet_controller.liquid[? "speedmod"])*!noWaterTileVer ));
+    y += vspd;
 
+    
+// x += hspd * (ifWater * 0.6);
 </string>
           </argument>
         </arguments>
