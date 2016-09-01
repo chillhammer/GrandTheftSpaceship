@@ -62,8 +62,8 @@ for (i=0; i&lt;amount_of_liquids; i+=1)
 {
     global.liquids[| i] = ds_map_create();
     name = scr_name_liquid();
-    hue = random_range(130,190);
-    speedmod = random(0.5) + 0.1;
+    hue = random_range(0,255);
+    speedmod = random(0.3) + 0.3;
     show_debug_message(string(name)); //shows all liquids
     
     ds_map_add( global.liquids[| i], "name", name );
