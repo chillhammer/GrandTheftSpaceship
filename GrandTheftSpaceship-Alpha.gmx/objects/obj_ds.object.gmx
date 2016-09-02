@@ -81,15 +81,18 @@ for (i=0; i&lt;amount_of_factions; i+=1)
     name = string(totro(3,6,1));
     legs =  irandom(3)+irandom(3);
     mass = random_range(1,90) + random_range(1,90);
-    spd = max(legs + 6 - mass/30, 0.2);
+    spd = max(legs/2 + (6 - mass/30)/2, 0.2);
     color = make_color_hsv( random(255), 200 + random(55), 200 + random(55) );
     
+    //The following properties go from 0 to 4, 2 being the median
+    attentionspan = irandom(4)
     
     ds_map_add( global.factions[| i], "name", name );
     ds_map_add( global.factions[| i], "legs", legs );
     ds_map_add( global.factions[| i], "mass", mass );
     ds_map_add( global.factions[| i], "speed", spd );
     ds_map_add( global.factions[| i], "color", color );
+    ds_map_add( global.factions[| i], "attentionspan", attentionspan );
 };
 </string>
           </argument>

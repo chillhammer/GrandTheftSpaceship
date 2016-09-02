@@ -85,7 +85,7 @@ for (h = 0; h < length + 2; h++)
 }
 
 //What faction resides here?
-cornerblock.faction = irandom(ds_grid_width(global.factiongrid)) - 1;
+cornerblock.faction = choose_ds_list_random(global.factions);
 
 //Return the cornerblock in case you wanted to do something with it
 return cornerblock;

@@ -65,10 +65,12 @@
     <room>rooms\rm_initiate</room>
     <room>rooms\rm_test</room>
   </rooms>
-  <constants number="3">
+  <constants number="5">
     <constant name="VIEW_CAMERA">0</constant>
     <constant name="VIEW_ENTIRE">5</constant>
     <constant name="MAX_HEIGHT">100</constant>
+    <constant name="IDLE_STAND">0</constant>
+    <constant name="IDLE_MOVE">1</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
