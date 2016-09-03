@@ -29,8 +29,12 @@
 var length = 3 + irandom(3);
 var height = 3 + irandom(3);
 var cornerblock = scr_gen_rect_house(length, height, 32, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
-var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
-villager.faction = cornerblock.faction;
+    
+if (cornerblock != "failed")
+{
+    var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
+    villager.faction = cornerblock.faction;
+}
 </string>
           </argument>
         </arguments>

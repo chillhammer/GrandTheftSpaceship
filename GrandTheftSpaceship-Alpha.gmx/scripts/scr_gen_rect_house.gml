@@ -60,6 +60,7 @@ while (!placed && attempts < max_attempts)
 if (attempts == 20)
 {
     show_debug_message("Attempted 20 times to place house with length of " + string(length) + " and height of " + string(height) + " and failed.");
+    return "failed";
     exit;
 }
 
