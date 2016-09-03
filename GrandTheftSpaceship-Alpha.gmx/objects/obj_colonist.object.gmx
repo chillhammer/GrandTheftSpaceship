@@ -254,6 +254,7 @@ if( x &gt; room_width || x &lt; 0 || y &gt; room_height || y &lt; 0)
             <string>///Draw Loop
 draw_self();
 draw_self_loop();
+draw_self();
 </string>
           </argument>
         </arguments>
