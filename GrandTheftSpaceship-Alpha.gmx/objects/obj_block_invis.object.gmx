@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_solid</parentName>
+  <parentName>obj_block</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Warp
-warp()
-instance_create_invis_obj(obj_block_invis);
+            <string>///No Warp
 </string>
           </argument>
         </arguments>
@@ -50,10 +48,7 @@ instance_create_invis_obj(obj_block_invis);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw_self()
-
-draw_self();
-draw_self_loop();
+            <string>///Do Not Draw
 </string>
           </argument>
         </arguments>
