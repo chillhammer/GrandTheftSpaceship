@@ -35,6 +35,7 @@ cornerblock.faction = fac;
 
 var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
 villager.faction = fac;
+villager.cornerblock = cornerblock;
 </string>
           </argument>
         </arguments>
@@ -58,11 +59,6 @@ villager.faction = fac;
           <argument>
             <kind>1</kind>
             <string>///Generate a rectangle house
-var length = 5 + irandom(3);
-var height = 5 + irandom(3);
-var cornerblock = scr_gen_rect_house(length, height, 0, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
-var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
-villager.faction = cornerblock.faction;
 var length = 3 + irandom(3);
 var height = 3 + irandom(3);
 var cornerblock = scr_gen_rect_house(length, height, 32, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
@@ -71,6 +67,7 @@ if (cornerblock != "failed")
 {
     var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
     villager.faction = cornerblock.faction;
+    villager.cornerblock = cornerblock;
 }
 </string>
           </argument>

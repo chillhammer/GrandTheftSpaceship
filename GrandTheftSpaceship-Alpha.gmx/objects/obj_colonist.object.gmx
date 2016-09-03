@@ -58,7 +58,7 @@ spd = gauss(faction[? "speed"], faction[? "speed"]/6);
 
 state = IDLE_STAND;
 idletimer = 0;
-idletimer_threshold = (3 + faction[? "attentionspan"]) * room_speed;
+idletimer_threshold = (3 + faction[? "attentionspan"]) * (room_speed*1.5);
 
 path = path_add();
 </string>
@@ -139,19 +139,40 @@ if (idletimer &gt; idletimer_threshold)
     var attempts = 0;
     while (success = false &amp;&amp; attempts &lt; 30)
     {
-        //Try to find a suitable move location
-        radius = spd * room_speed; //How far you can move in 1s will be our radius
-        xmove = random_range(-radius,radius);
-        ymove = sqrt(sqr(radius) - sqr(xmove)) * choose(-1,1);
-        xmove += x;
-        ymove += y;
-        if (!collision_rectangle(xmove-sprite_width/2, ymove-sprite_height/2, xmove+sprite_width/2, ymove+sprite_height/2, obj_solid, 1, 0))
+        //Figure out the co-ords to home
+        xhome = cornerblock.x + (cornerblock.house_length*cornerblock.sprite_width)/2;
+        if (point_distance(x, y, xhome, y) &gt; point_distance(x, y, xhome - room_width, y))
+            xhome -= room_width;
+        if (point_distance(x, y, xhome, y) &gt; point_distance(x, y, xhome + room_width, y))
+            xhome += room_width;
+        yhome = cornerblock.y + (cornerblock.house_height*cornerblock.sprite_height)/2;
+        if (point_distance(x, y, x, yhome) &gt; point_distance(x, y, x, yhome - room_height))
+            yhome -= room_height;
+        if (point_distance(x, y, x, yhome) &gt; point_distance(x, y, x, yhome + room_height))
+            yhome += room_height;
+        //If home is more than 1s away, return there
+        if (point_distance(x, y, xhome, yhome) &gt; spd*room_speed*1)
         {
-                mp_potential_path_object(path, xmove, ymove, spd, 4, obj_solid);
-                success = true;
-                path_start(path, spd, path_action_stop, 1);
+            mp_potential_path_object(path, xhome + ((cornerblock.house_length-2)*cornerblock.sprite_width)/2 - sprite_width * choose(-1,1), yhome + ((cornerblock.house_height-2)*cornerblock.sprite_height/2 - sprite_height) * choose(-1,1), spd, 4, obj_solid);
+            success = true;
+            path_start(path, spd, path_action_stop, 1);
+        } 
+        else
+        {
+            //Try to find a suitable move location
+            radius = random_range((spd*room_speed)/3, spd * room_speed); //How far you can move in .33s - 1s will be our radius
+            xmove = random_range(-radius,radius);
+            ymove = sqrt(sqr(radius) - sqr(xmove)) * choose(-1,1);
+            xmove += x;
+            ymove += y;
+            if (!collision_rectangle(xmove-sprite_width/2, ymove-sprite_height/2, xmove+sprite_width/2, ymove+sprite_height/2, obj_solid, 1, 0))
+            {
+                    mp_potential_path_object(path, xmove, ymove, spd, 4, obj_solid);
+                    success = true;
+                    path_start(path, spd, path_action_stop, 1);
+            }
+            attempts ++;
         }
-        attempts ++;
     }
     if (attempts == 30)
         show_debug_message("Couldn't find a path.");
