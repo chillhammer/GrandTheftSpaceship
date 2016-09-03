@@ -1,4 +1,4 @@
-///scr_gen_square_house(length,minx,max,miny,maxy,doors)
+///scr_gen_rect_house(length,height,minx,max,miny,maxy,doors)
 //Make a square house somewhere on the map
 length = argument[0];
 height = argument[1];
@@ -23,9 +23,9 @@ while (!placed && attempts < max_attempts)
     cornerblock = instance_create(random_range(min_x,max_x), random_range(min_y,max_y), obj_block);
     
     //Make the other corners
-    var crn2 = instance_create(cornerblock.x + (length-1)*cornerblock.sprite_width, cornerblock.y, obj_block);
-    var crn3 = instance_create(cornerblock.x, cornerblock.y + (height-1)*cornerblock.sprite_height, obj_block);
-    var crn4 = instance_create(cornerblock.x + (length-1)*cornerblock.sprite_width, cornerblock.y + (height-1)*cornerblock.sprite_height, obj_block);
+    var crn2 = instance_create(cornerblock.x + (length-1)*cornerblock.sprite_width, cornerblock.y, obj_block); //top right
+    var crn3 = instance_create(cornerblock.x, cornerblock.y + (height-1)*cornerblock.sprite_height, obj_block); // bottom left
+    var crn4 = instance_create(cornerblock.x + (length-1)*cornerblock.sprite_width, cornerblock.y + (height-1)*cornerblock.sprite_height, obj_block); //bottom right
     
     //Make the rest of the rect
     for (i = 1; i <= length - 2; i++)

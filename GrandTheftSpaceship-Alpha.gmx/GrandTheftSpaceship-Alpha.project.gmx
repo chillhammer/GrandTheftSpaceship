@@ -13,6 +13,7 @@
     <sprite>sprites\spr_test</sprite>
     <sprite>sprites\spr_block</sprite>
     <sprite>sprites\spr_alien</sprite>
+    <sprite>sprites\spr_1pixel</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_gts</background>
@@ -21,18 +22,9 @@
   <scripts name="scripts">
     <script>scripts\controls_init.gml</script>
     <script>scripts\controls_key_check.gml</script>
-    <script>scripts\draw_self_position.gml</script>
-    <script>scripts\draw_self_loop.gml</script>
     <script>scripts\point_to_mouse.gml</script>
     <script>scripts\scr_gen_rect_house.gml</script>
     <script>scripts\scr_check_block_collision.gml</script>
-    <script>scripts\scr_name_liquid.gml</script>
-    <script>scripts\draw_self_loop_ext.gml</script>
-    <script>scripts\draw_self_position_ext.gml</script>
-    <script>scripts\totro.gml</script>
-    <script>scripts\random_2d_smooth.gml</script>
-    <script>scripts\random_2d_smooth_loop.gml</script>
-    <script>scripts\random_with_chunk.gml</script>
     <script>scripts\get_planet_color.gml</script>
     <script>scripts\gauss.gml</script>
     <scripts name="simplex functions">
@@ -44,8 +36,28 @@
       <script>scripts\simplex_generate_hash.gml</script>
     </scripts>
     <script>scripts\choose_ds_list_random.gml</script>
+    <scripts name="Drawing Functions">
+      <script>scripts\draw_self_position.gml</script>
+      <script>scripts\draw_self_position_ext.gml</script>
+      <script>scripts\draw_self_loop.gml</script>
+      <script>scripts\draw_self_loop_ext.gml</script>
+    </scripts>
+    <scripts name="Terrain Generation">
+      <script>scripts\random_2d_smooth.gml</script>
+      <script>scripts\random_2d_smooth_loop.gml</script>
+      <script>scripts\random_with_chunk.gml</script>
+    </scripts>
+    <scripts name="Name Generation">
+      <script>scripts\scr_name_liquid.gml</script>
+      <script>scripts\totro.gml</script>
+    </scripts>
+    <script>scripts\scr_gen_rect_house_new.gml</script>
+    <script>scripts\warp.gml</script>
+    <script>scripts\warp_clamp.gml</script>
+    <script>scripts\collision_box.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\obj_entity</object>
     <object>objects\obj_player</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_test</object>

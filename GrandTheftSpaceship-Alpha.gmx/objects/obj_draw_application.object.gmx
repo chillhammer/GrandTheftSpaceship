@@ -137,7 +137,6 @@ if(surface_exists(map_surface)){
     xview = view_xview[VIEW_CAMERA];
     yview = view_yview[VIEW_CAMERA];
     
-    
     //right
     draw_surface_part(map_surface,0,0,wview,room_height,room_width,0);
     
@@ -163,6 +162,12 @@ if(surface_exists(map_surface)){
     
     //topleft
     draw_surface_part(map_surface,view_wview[VIEW_ENTIRE]-wview,view_hview[VIEW_ENTIRE]-hview,wview,hview,-wview,-hview);
+    
+    //debug coordinates
+    if(instance_exists(obj_player)){
+        draw_set_color(c_white);
+        draw_text(xview+16,yview+16,"X: "+string(obj_player.x)+", Y: "+string(obj_player.y));
+    }
 
 }else{
     map_surface = surface_create(view_wview[VIEW_ENTIRE],view_hview[VIEW_ENTIRE]);

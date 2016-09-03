@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-10</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_entity</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -145,14 +145,16 @@ if(instance_exists(obj_planet_controller)){
     var pc = obj_planet_controller;
     var xx = x div pc.block_size;
     var yy = y div pc.block_size;
+    var width = (room_width div pc.block_size)-1;
+    var height = (room_height div pc.block_size)-1;
     var block_hspd = sign(hspd)*1;
     var block_vspd = sign(vspd)*1;
     //check for water horizontally
-    if(pc.terrain_grid[# xx+block_hspd,yy] &lt; pc.water_level){
+    if(pc.terrain_grid[# warp_clamp(xx+block_hspd,0,width),yy] &lt; pc.water_level){
         noWaterTileHor = false;
     }
     //check for water vertically
-    if(pc.terrain_grid[# xx,yy+block_vspd] &lt; pc.water_level){
+    if(pc.terrain_grid[# xx,warp_clamp(yy+block_vspd,0,height)] &lt; pc.water_level){
         noWaterTileVer = false;
     }
     
@@ -162,10 +164,10 @@ if(instance_exists(obj_planet_controller)){
 }
 
 
-if(!place_meeting(x+hspd,y,obj_solid))
+if(!place_meeting(warp_clamp(x+hspd,0,room_width),y,obj_solid))
     x += hspd;
     
-if(!place_meeting(x,y+vspd,obj_solid))
+if(!place_meeting(x,warp_clamp(y+vspd,0,room_height),obj_solid))
     y += vspd;
 
     
@@ -191,19 +193,7 @@ if(!place_meeting(x,y+vspd,obj_solid))
           <argument>
             <kind>1</kind>
             <string>///Warp PLayer
-var pad = move_spd;
-
-if( x &gt; room_width || x &lt; 0 || y &gt; room_height || y &lt; 0){
-    warpFlash = true;
-    
-    if(x &gt; room_width) x = pad;
-
-    if(x &lt; 0) x = room_width-pad;
-    
-    if(y &gt; room_height) y = pad;
-    
-    if(y &lt; 0) y = room_height-pad;
-}
+warpFlash = warp();
 </string>
           </argument>
         </arguments>

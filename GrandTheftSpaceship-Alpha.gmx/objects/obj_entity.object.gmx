@@ -8,15 +8,15 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="9" enumb="72">
+    <event eventtype="7" enumb="25">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>605</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
         <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
@@ -25,30 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Sergeant Sam Style House
-var length = 5 + irandom(3);
-var height = 5 + irandom(3);
-var fac = choose_ds_list_random(global.factions);
-//var cornerblock = scr_gen_rect_house(length, height, 0, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
-var cornerblock = scr_gen_rect_house_new(obj_block,length,height);
-cornerblock.faction = fac;
-
-var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
-villager.faction = fac;
-</string>
+            <string>This is a parent object.</string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="9" enumb="71">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>605</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
         <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
@@ -57,13 +45,7 @@ villager.faction = fac;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Generate a rectangle house
-var length = 5 + irandom(3);
-var height = 5 + irandom(3);
-var cornerblock = scr_gen_rect_house(length, height, 0, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
-var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
-villager.faction = cornerblock.faction;
-</string>
+            <string>So generation acknowledges</string>
           </argument>
         </arguments>
       </action>
