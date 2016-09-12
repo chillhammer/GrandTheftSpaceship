@@ -41,12 +41,15 @@ ground_hue = random_range(26,86);
 
 show_debug_message("Planet liquid: " + string(liquid[? "name"]))
 
+//TODO: Create tech level variable
+
 
 
 
 
 ///////////////////////
 
+alarm[0] = 1; // Civilization Creation
 //creates unique seed for planet generation
 randomize();
 seed = round(random_range(1000000,10000000));
@@ -70,6 +73,85 @@ for (i=0; i&lt;width; i+=1)
     
 };
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Civilization Generation
+
+var zone = obj_zone_savage;
+var zone_id = -1;
+var zone_spr = object_get_sprite( zone );
+var zone_w = sprite_get_width(zone_spr);
+var zone_h = sprite_get_height(zone_spr);
+
+var attempts = 0;
+var max_attempts = 20;
+
+var x1, y1, x2, y2, xc, yc, xd1, xd2;
+
+while (attempts &lt; max_attempts )
+{
+    x1 = irandom(room_width-1);
+    y1 = irandom(room_height-1);
+    x2 = x1 + zone_w; 
+    y2 = y1 + zone_h; 
+    xc = lerp(x1,x2,0.5);
+    yc = lerp(y1,y2,0.5);
+    xd1= lerp(x1,x2,0.25);
+    yd1= lerp(y1,y2,0.25);
+    xd2= lerp(x1,x2,0.75);
+    yd2= lerp(y1,y2,0.75);
+    
+    //warping all coordinates besides x1 and y1
+    x2 = warp_clamp(x2,0,room_width);
+    y2 = warp_clamp(y2,0,room_height);
+    xc = warp_clamp(xc,0,room_width);
+    yc = warp_clamp(yc,0,room_height);
+    xd1 = warp_clamp(xd1,0,room_width);
+    yd1 = warp_clamp(yd1,0,room_height);
+    xd2 = warp_clamp(xd2,0,room_width);
+    yd2 = warp_clamp(yd2,0,room_height);
+    
+    //checking if mainly land
+    if( place_elevation(x1,y1) &gt; water_level &amp;&amp;
+        place_elevation(x2,y1) &gt; water_level &amp;&amp;
+        place_elevation(x1,y2) &gt; water_level &amp;&amp;
+        place_elevation(x2,y2) &gt; water_level &amp;&amp;
+        place_elevation(xc,yc) &gt; water_level &amp;&amp;
+        place_elevation(xd1,yd1) &gt; water_level &amp;&amp;
+        place_elevation(xd2,yd2) &gt; water_level){
+        //if corners are land    
+        zone_id = instance_create(x1,y1,zone);
+        with(zone_id){
+            if(place_meeting(x,y,obj_zone)){
+                //instance_destroy();
+            }
+        }
+    }
+    
+    attempts ++
+};
+if(zone_id == -1)
+    show_debug_message("Failed to create zone after 20 attempts.");
 </string>
           </argument>
         </arguments>
