@@ -29,14 +29,12 @@
 var length = 5 + irandom(3);
 var height = 5 + irandom(3);
 var fac = choose_ds_list_random(global.factions);
+//var cornerblock = scr_gen_rect_house(length, height, 0, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
 var cornerblock = scr_gen_rect_house_new(obj_block,length,height);
+cornerblock.faction = fac;
 
-if(cornerblock != -1){
-    cornerblock.faction = fac;
-    
-    var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
-    villager.faction = fac;
-}
+var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
+villager.faction = fac;
 </string>
           </argument>
         </arguments>
@@ -60,13 +58,11 @@ if(cornerblock != -1){
           <argument>
             <kind>1</kind>
             <string>///Generate a rectangle house
-/*
 var length = 5 + irandom(3);
 var height = 5 + irandom(3);
 var cornerblock = scr_gen_rect_house(length, height, 0, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
 var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
 villager.faction = cornerblock.faction;
-*/
 var length = 3 + irandom(3);
 var height = 3 + irandom(3);
 var cornerblock = scr_gen_rect_house(length, height, 32, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
