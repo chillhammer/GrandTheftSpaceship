@@ -37,6 +37,9 @@ if(cornerblock != -1){
     var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
     villager.faction = fac;
 }
+var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
+villager.faction = fac;
+villager.cornerblock = cornerblock;
 </string>
           </argument>
         </arguments>
@@ -75,6 +78,7 @@ if (cornerblock != "failed")
 {
     var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
     villager.faction = cornerblock.faction;
+    villager.cornerblock = cornerblock;
 }
 </string>
           </argument>

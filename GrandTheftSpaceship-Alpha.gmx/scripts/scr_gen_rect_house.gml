@@ -13,7 +13,7 @@ placed = false;
 doornum = 0;
 olddoornum = -1;
 attempts = 0;
-max_attempts = 20;
+max_attempts = 30;
 
 potential_doors = ds_list_create();
 
@@ -57,7 +57,7 @@ while (!placed && attempts < max_attempts)
 }
 
 //Throw a failure message
-if (attempts == 20)
+if (attempts == max_attempts)
 {
     show_debug_message("Attempted 20 times to place house with length of " + string(length) + " and height of " + string(height) + " and failed.");
     return "failed";
@@ -87,6 +87,10 @@ for (h = 0; h < length + 2; h++)
 
 //What faction resides here?
 cornerblock.faction = choose_ds_list_random(global.factions);
+
+//Other cornerblock vars
+cornerblock.house_length = length;
+cornerblock.house_height = height;
 
 //Return the cornerblock in case you wanted to do something with it
 return cornerblock;

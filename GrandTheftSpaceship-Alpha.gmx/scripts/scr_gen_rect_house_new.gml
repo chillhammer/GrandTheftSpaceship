@@ -108,6 +108,13 @@ with(instance_create(tl_x-house_pad,tl_y-house_pad,obj_floor)){
     }
 }
 
+//What faction resides here?
+cornerblock.faction = choose_ds_list_random(global.factions);
+
+//Other cornerblock vars
+cornerblock.house_length = length;
+cornerblock.house_height = height;
+
 ds_list_destroy( block_list );
 
 return cornerblock;
