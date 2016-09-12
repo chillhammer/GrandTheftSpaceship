@@ -14,6 +14,7 @@
     <sprite>sprites\spr_block</sprite>
     <sprite>sprites\spr_alien</sprite>
     <sprite>sprites\spr_1pixel</sprite>
+    <sprite>sprites\spr_savage_zone</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_gts</background>
@@ -56,6 +57,7 @@
     <script>scripts\warp_clamp.gml</script>
     <script>scripts\collision_box.gml</script>
     <script>scripts\instance_create_invis_obj.gml</script>
+    <script>scripts\place_elevation.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_entity</object>
@@ -68,6 +70,9 @@
     <object>objects\obj_solid</object>
     <object>objects\obj_floor</object>
     <object>objects\obj_colonist</object>
+    <object>objects\obj_zone</object>
+    <object>objects\obj_zone_savage</object>
+    <object>objects\obj_zone_savage_invis</object>
     <objects name="Setup, Generation, Controllers">
       <object>objects\obj_ds</object>
       <object>objects\obj_generator</object>
