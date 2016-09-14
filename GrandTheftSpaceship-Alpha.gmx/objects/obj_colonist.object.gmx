@@ -34,6 +34,29 @@ xmove = 0;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Get a name
+name = string_letters(string(totro(3,6,1)));
+show_name = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="0">
       <action>
@@ -254,6 +277,47 @@ if( x &gt; room_width || x &lt; 0 || y &gt; room_height || y &lt; 0)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///See if name should be shown
+
+//God is dead
+//And my shitty code has killed him
+if (   point_in_rectangle(mouse_x,mouse_y,bbox_left,bbox_top,bbox_right,bbox_bottom)
+    || point_in_rectangle(mouse_x,mouse_y,bbox_left + room_width,bbox_top,bbox_right + room_width,bbox_bottom)
+    || point_in_rectangle(mouse_x,mouse_y,bbox_left - room_width,bbox_top,bbox_right - room_width,bbox_bottom)
+    || point_in_rectangle(mouse_x,mouse_y,bbox_left,bbox_top + room_height,bbox_right,bbox_bottom + room_height)
+    || point_in_rectangle(mouse_x,mouse_y,bbox_left,bbox_top - room_height,bbox_right,bbox_bottom - room_height)
+    || point_in_rectangle(mouse_x,mouse_y,bbox_left + room_width,bbox_top - room_height,bbox_right + room_width,bbox_bottom - room_height)
+    || point_in_rectangle(mouse_x,mouse_y,bbox_left + room_width,bbox_top + room_height,bbox_right + room_width,bbox_bottom + room_height)
+    || point_in_rectangle(mouse_x,mouse_y,bbox_left - room_width,bbox_top - room_height,bbox_right - room_width,bbox_bottom - room_height)
+    || point_in_rectangle(mouse_x,mouse_y,bbox_left - room_width,bbox_top + room_height,bbox_right - room_width,bbox_bottom + room_height)
+    )
+{
+    show_name = true;
+}
+else
+{
+    show_name = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -276,6 +340,36 @@ if( x &gt; room_width || x &lt; 0 || y &gt; room_height || y &lt; 0)
 draw_self();
 draw_self_loop();
 draw_self();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Tell HUD to draw name
+if (show_name)
+{
+    obj_hud.name = name;
+}
+else
+if (obj_hud.name == name)
+{
+    obj_hud.name = "";
+}
 </string>
           </argument>
         </arguments>

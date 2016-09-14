@@ -59,6 +59,9 @@
     <script>scripts\instance_create_invis_obj.gml</script>
     <script>scripts\place_elevation.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_name</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_entity</object>
     <object>objects\obj_player</object>
@@ -73,6 +76,7 @@
     <object>objects\obj_zone</object>
     <object>objects\obj_zone_savage</object>
     <object>objects\obj_zone_savage_invis</object>
+    <object>objects\obj_hud</object>
     <objects name="Setup, Generation, Controllers">
       <object>objects\obj_ds</object>
       <object>objects\obj_generator</object>

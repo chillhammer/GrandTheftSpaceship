@@ -3,32 +3,12 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="7" enumb="25">
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>basically commented out, no need to use</string>
-          </argument>
-        </arguments>
-      </action>
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -45,30 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Generate a rectangle house
-/*
-var length = 5 + irandom(3);
-var height = 5 + irandom(3);
-var cornerblock = scr_gen_rect_house(length, height, 0, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
-var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
-villager.faction = cornerblock.faction;
-*/
-var length = 3 + irandom(3);
-var height = 3 + irandom(3);
-var cornerblock = scr_gen_rect_house(length, height, 32, room_width - 32*(length+1), 32, room_height - 32*(height+1), 1);
-    
-if (cornerblock != "failed")
-{
-    var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
-    villager.faction = cornerblock.faction;
-    villager.cornerblock = cornerblock;
-}
+            <string>///Init vars
+name = "";
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="72">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -85,17 +49,57 @@ if (cornerblock != "failed")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Sergeant Sam Style House
-var length = 5 + irandom(3);
-var height = 5 + irandom(3);
-var fac = choose_ds_list_random(global.factions);
-var cornerblock = scr_gen_rect_house_new(obj_block,length,height);
+            <string>///Draw name boxes
+if (name != "")
+{
+    draw_set_alpha(0.5);
+    draw_set_font(fnt_name);
+    
+    //Init vars
+    var a = 9;
+    var b = 20;
+    
+    mx = mouse_x;
+    /*if (mx &gt; room_width)
+        mx = mouse_x - room_width;
+    if (mx &lt; 0)
+        mz = mouse_x + room_width;*/
+        
+    my = mouse_y;
+    /*if (my &gt; room_height)
+        my = mouse_y - room_height;
+    if (my &lt; 0)
+        my = mouse_y + room_height;*/
+    
+    draw_set_color(c_navy);
+    draw_rectangle(mx, my, mx + 32 + string_length(name)*a, my + b, 0);
+    draw_set_color(c_white);
+    draw_text(mx + 16, my, name);
+    
 
-if(cornerblock != -1){
-    cornerblock.faction = fac;
-    var villager = instance_create(cornerblock.x+cornerblock.sprite_width+12,cornerblock.y+cornerblock.sprite_height+12,obj_colonist);
-    villager.faction = fac;
-    villager.cornerblock = cornerblock;
+    /*if (mx &gt; room_width - string_length(name)*a)
+    {
+        draw_set_color(c_navy);
+        draw_rectangle(mx-room_width, my, mx - room_width + string_length(name)*a, my+b, 0);
+        draw_set_color(c_white);
+        draw_text(mx-room_width, my+(b/2), name);
+    }
+    if (my &gt; room_height - b)
+    {
+        draw_set_color(c_navy);
+        draw_rectangle(mx, my - room_height, mx + string_length(name)*a, my+b - room_height, 0);
+        draw_set_color(c_white);
+        draw_text(mx, my+(b/2) - room_height, name);
+    }
+    if (mx &gt; room_width - string_length(name)*a &amp;&amp; my &gt; room_height - b)
+    {
+        draw_set_color(c_navy);
+        draw_rectangle(mx-room_width, my - room_height, mx - room_width + string_length(name)*a, my+b - room_height, 0);
+        draw_set_color(c_white);
+        draw_text(mx - room_width, my+(b/2) - room_height, name);
+    }*/
+    
+    draw_set_alpha(1);
 }
 </string>
           </argument>
